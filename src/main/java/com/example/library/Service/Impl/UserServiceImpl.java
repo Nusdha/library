@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.example.library.Model.User;
 import com.example.library.Repository.UserRepository;
 import com.example.library.Service.UserService;
@@ -31,6 +30,23 @@ public class UserServiceImpl implements UserService{
     public User getUserById(Long id) {
         Optional<User> user = userRepository.findById(id);
         return user.orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    @Override
+    public User updateUser(User user, Long id) {
+        User existingUser = getUserById(id);
+                existingUser.setUserFirstName(user.getUserFirstName());
+                existingUser.setUserLastName(user.getUserLastName());
+                existingUser.setEmail(user.getEmail());
+                existingUser.setDepartment(user.getDepartment());
+                existingUser.setCourse(user.getCourse());
+                existingUser.setYearOfEnrollment(user.getYearOfEnrollment());
+                return userRepository.save(existingUser);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 
 }

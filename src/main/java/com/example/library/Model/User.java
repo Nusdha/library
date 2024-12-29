@@ -1,7 +1,12 @@
 package com.example.library.Model;
 
+import java.util.Set;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.ReadOnlyProperty;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +27,11 @@ public class User {
     private String email;
     private String department;
     private String course;
-    private int YearOfEntrollment;
+    private int YearOfEnrollment;
+
+    @ReadOnlyProperty
+    @DocumentReference
+    @DBRef
+    private Set<Borrow> borrow;
 
 }
