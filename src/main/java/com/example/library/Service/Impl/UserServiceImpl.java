@@ -1,7 +1,11 @@
 package com.example.library.Service.Impl;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.example.library.Model.User;
 import com.example.library.Repository.UserRepository;
@@ -16,6 +20,17 @@ public class UserServiceImpl implements UserService{
     @Override
     public User saveUser(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.orElseThrow(() -> new RuntimeException("User not found"));
     }
 
 }

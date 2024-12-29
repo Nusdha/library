@@ -43,7 +43,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Admin getAdminById(String id) {
         Optional<Admin> admin =adminRepository.findById(id);
-        return admin.orElseThrow(() -> new RuntimeException("Student not found"));
+        return admin.orElseThrow(() -> new RuntimeException("Admins not found"));
     }
         
 
