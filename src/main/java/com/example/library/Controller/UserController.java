@@ -20,6 +20,7 @@ import com.example.library.Service.UserService;
 
 @RestController
 @CrossOrigin
+//(origins = "*")
 @RequestMapping("/api/user")
 public class UserController {
 
@@ -35,6 +36,11 @@ public class UserController {
     public ResponseEntity<User> saveUser(@RequestBody User user){
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
     }
+
+    //@PostMapping("/login")
+    //public ResponseEntity<User> loginUser(@PathVariable String email,@PathVariable String userPassword){
+       // return new ResponseEntity<>(userService.loginUser(email,userPassword), HttpStatus.CREATED);
+    //}
 
     //http://localhost:8081/api/user/getAllUser(GET)
     @GetMapping("/getAllUser")

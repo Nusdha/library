@@ -20,6 +20,7 @@ import com.example.library.Service.BorrowService;
 
 @RestController
 @CrossOrigin
+//(origins = "*")
 @RequestMapping("/api/borrow")
 public class BorrowController {
 

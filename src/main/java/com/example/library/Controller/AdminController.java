@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
+//(origins = "*")
 @RequestMapping("/api/admin")
 public class AdminController {
 
@@ -27,6 +28,11 @@ public class AdminController {
     public ResponseEntity<Admin> saveAdmin(@RequestBody Admin admin){
         return new ResponseEntity<>(adminService.saveAdmin(admin), HttpStatus.CREATED);
     }
+
+    //@PostMapping("/login")
+    //public ResponseEntity<Admin> loginAdmin(@PathVariable String adminEmail,@PathVariable String password){
+        //return new ResponseEntity<>(adminService.loginAdmin(adminEmail,password), HttpStatus.CREATED);
+    //}
 
     //http://localhost:8081/api/admin/getAllAdmin(GET)
     @GetMapping("/getAllAdmin")

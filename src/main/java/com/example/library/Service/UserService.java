@@ -16,4 +16,6 @@ public interface UserService {
 
     void deleteUser(Long id);
 
+    //User loginUser(String email, String userPassword);
+
 }

@@ -41,6 +41,7 @@ public class UserServiceImpl implements UserService{
                 existingUser.setDepartment(user.getDepartment());
                 existingUser.setCourse(user.getCourse());
                 existingUser.setYearOfEnrollment(user.getYearOfEnrollment());
+                existingUser.setUserPassword(user.getUserPassword());
                 return userRepository.save(existingUser);
     }
 
@@ -48,5 +49,10 @@ public class UserServiceImpl implements UserService{
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+    //@Override
+    //public User loginUser(String email, String userPassword) {
+        //return userRepository.login(email,userPassword);
+    //}
 
 }
