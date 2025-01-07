@@ -19,8 +19,7 @@ import com.example.library.Model.Borrow;
 import com.example.library.Service.BorrowService;
 
 @RestController
-@CrossOrigin
-//(origins = "*")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/borrow")
 public class BorrowController {
 

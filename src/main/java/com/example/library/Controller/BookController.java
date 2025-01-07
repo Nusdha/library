@@ -19,8 +19,7 @@ import com.example.library.Model.Book;
 import com.example.library.Service.BookService;
 
 @RestController
-@CrossOrigin
-//(origins = "*")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/book")
 public class BookController {
 
