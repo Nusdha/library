@@ -6,12 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.ReadOnlyProperty;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
-
-import java.util.Set;
 
 @Setter
 @Getter
@@ -24,11 +19,6 @@ public class Admin {
     private String adminName;
     private String adminEmail;
     private String password;
-
-    @ReadOnlyProperty
-    @DocumentReference
-    @DBRef
-    private Set<Book> book;
 
     public String getAdminId() {
         return adminId;
@@ -44,10 +34,6 @@ public class Admin {
 
     public String getPassword() {
         return password;
-    }
-
-    public Set<Book> getBook() {
-        return book;
     }
 
     public void setAdminId(String adminId) {
@@ -66,7 +52,4 @@ public class Admin {
         this.password = password;
     }
 
-    public void setBook(Set<Book> book) {
-        this.book = book;
-    }
 }

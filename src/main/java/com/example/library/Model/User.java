@@ -1,13 +1,7 @@
 package com.example.library.Model;
 
-import java.util.Set;
-
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.ReadOnlyProperty;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
@@ -39,11 +33,6 @@ public class User {
     private int YearOfEnrollment;
     @NotBlank
     private String userPassword;
-
-    @ReadOnlyProperty
-    @DocumentReference
-    @DBRef
-    private Set<Borrow> borrow;
 
     public long getUserID() {
         return userID;
@@ -109,11 +98,4 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    public Set<Borrow> getBorrow() {
-        return borrow;
-    }
-
-    public void setBorrow(Set<Borrow> borrow) {
-        this.borrow = borrow;
-    }
 }

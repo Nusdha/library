@@ -35,10 +35,6 @@ public class BorrowServiceImpl implements BorrowService{
     @Override
     public Borrow updateBorrow(Borrow borrow, String id) {
         Borrow existingBorrow = getBorrowById(id);
-            existingBorrow.setBook(borrow.getBook());
-            existingBorrow.setBookID(borrow.getBookID());
-            existingBorrow.setUser(borrow.getUser());
-            existingBorrow.setUserID(borrow.getUserID());
             existingBorrow.setBorrowDate(borrow.getBorrowDate());
             existingBorrow.setReturnDate(borrow.getReturnDate());
             return borrowRepository.save(existingBorrow);

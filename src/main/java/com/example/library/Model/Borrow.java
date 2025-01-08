@@ -21,33 +21,11 @@ public class Borrow {
     @Id
     @Generated
     private String borrowId;
-
-    private Book book;
-    private String bookID;
-    private User user;
-    private long userID;
-
     private LocalDate borrowDate;
     private LocalDate returnDate;
 
     public String getBorrowId() {
         return borrowId;
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public String getBookID() {
-        return bookID;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public long getUserID() {
-        return userID;
     }
 
     public LocalDate getBorrowDate() {
@@ -62,22 +40,6 @@ public class Borrow {
         this.borrowId = borrowId;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    public void setBookID(String bookID) {
-        this.bookID = bookID;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setUserID(long userID) {
-        this.userID = userID;
-    }
-
     public void setBorrowDate(LocalDate borrowDate) {
         this.borrowDate = borrowDate;
     }
@@ -85,4 +47,5 @@ public class Borrow {
     public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
+    
 }

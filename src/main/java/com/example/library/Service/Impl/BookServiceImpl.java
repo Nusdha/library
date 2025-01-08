@@ -45,10 +45,6 @@ public class BookServiceImpl implements BookService{
         existingBook.setPublicationDate(book.getPublicationDate());
         existingBook.setSubject(book.getSubject());
         existingBook.setStatus(book.getStatus());
-        existingBook.setUser(book.getUser());
-        existingBook.setUserID(book.getUserID());
-        existingBook.setAdmin(book.getAdmin());
-        existingBook.setAdminId(book.getAdminId());
         return bookRepository.save(existingBook);
     }
 
