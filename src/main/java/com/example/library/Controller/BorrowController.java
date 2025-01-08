@@ -31,28 +31,28 @@ public class BorrowController {
     }
 
     //http://localhost:8081/api/borrow/save(POST)
-    @PostMapping("/save")
+    @PostMapping
     public ResponseEntity<Borrow> saveBorrow(@RequestBody Borrow borrow){
         return new ResponseEntity<>(borrowService.saveBorrow(borrow), HttpStatus.CREATED);
     }
 
     //http://localhost:8081/api/borrow/getAllBorrow(GET)
-    @GetMapping("/getAllBorrow")
+    @GetMapping
     public List<Borrow> getAllBorrow(){
         return borrowService.getAllBorrow();
     }
 
-    @GetMapping("/getBorrowById/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Borrow> getBorrowById(@PathVariable String id){
         return new ResponseEntity<>(borrowService.getBorrowById(id),HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<Borrow> updateBorrow(@PathVariable String id, @RequestBody Borrow borrow){
        return new ResponseEntity<>(borrowService.updateBorrow(borrow, id),HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<String> deleteBorrow(@PathVariable String id){
         borrowService.deleteBorrow(id);
         return new ResponseEntity<>("Borrow deleted successfully",HttpStatus.OK);

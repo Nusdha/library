@@ -31,28 +31,28 @@ public class BookController {
     }
 
     //http://localhost:8081/api/book/save(POST)
-    @PostMapping("/save")
+    @PostMapping
     public ResponseEntity<Book> saveBook(@RequestBody Book book){
         return new ResponseEntity<>(bookService.saveBook(book), HttpStatus.CREATED);
     }
 
     //http://localhost:8081/api/book/getAllBook(GET)
-    @GetMapping("/getAllBook")
+    @GetMapping
     public List<Book> getAllBook(){
         return bookService.getAllBook();
     }
 
-    @GetMapping("/getBookById/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable String id){
         return new ResponseEntity<>(bookService.getBookById(id),HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable String id, @RequestBody Book book){
        return new ResponseEntity<>(bookService.updateBook(book, id),HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<String> deleteBook(@PathVariable String id){
         bookService.deleteBook(id);
         return new ResponseEntity<>("Book deleted successfully",HttpStatus.OK);

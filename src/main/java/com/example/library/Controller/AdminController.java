@@ -23,7 +23,7 @@ public class AdminController {
     }
 
     //http://localhost:8081/api/admin/save(POST)
-    @PostMapping("/save")
+    @PostMapping
     public ResponseEntity<Admin> saveAdmin(@RequestBody Admin admin){
         return new ResponseEntity<>(adminService.saveAdmin(admin), HttpStatus.CREATED);
     }
@@ -34,22 +34,22 @@ public class AdminController {
     //}
 
     //http://localhost:8081/api/admin/getAllAdmin(GET)
-    @GetMapping("/getAllAdmin")
+    @GetMapping
     public List<Admin> getAllAdmin(){
         return adminService.getAllAdmin();
     }
 
-    @GetMapping("/getAdminById/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Admin> getAdminById(@PathVariable String id){
         return new ResponseEntity<>(adminService.getAdminById(id),HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Admin> updateAdmin(@PathVariable String id, @RequestBody Admin admin){
        return new ResponseEntity<>(adminService.updateAdmin(admin, id),HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteAdmin(@PathVariable String id){
         adminService.deleteAdmin(id);
         return new ResponseEntity<>("Admin deleted successfully",HttpStatus.OK);

@@ -31,7 +31,7 @@ public class UserController {
     }
 
     //http://localhost:8081/api/user/save(POST)
-    @PostMapping("/save")
+    @PostMapping
     public ResponseEntity<User> saveUser(@RequestBody User user){
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
     }
@@ -42,22 +42,22 @@ public class UserController {
     //}
 
     //http://localhost:8081/api/user/getAllUser(GET)
-    @GetMapping("/getAllUser")
+    @GetMapping
     public List<User> getAllUser(){
         return userService.getAllUser();
     }
 
-    @GetMapping("/getUserById/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id){
         return new ResponseEntity<>(userService.getUserById(id),HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){
        return new ResponseEntity<>(userService.updateUser(user, id),HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
         return new ResponseEntity<>("User deleted successfully",HttpStatus.OK);
