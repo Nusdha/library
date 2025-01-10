@@ -10,12 +10,10 @@ public interface UserService {
 
     List<User> getAllUser();
 
-    User getUserById(Long id);
+    User getUserById(String id);
 
-    User updateUser(User user, Long id);
+    User updateUser(User user, String id);
 
-    void deleteUser(Long id);
-
-    //User loginUser(String email, String userPassword);
+    void deleteUser(String id);
 
 }

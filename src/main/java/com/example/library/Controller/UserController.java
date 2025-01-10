@@ -36,11 +36,6 @@ public class UserController {
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
     }
 
-    //@PostMapping("/login")
-    //public ResponseEntity<User> loginUser(@PathVariable String email,@PathVariable String userPassword){
-       // return new ResponseEntity<>(userService.loginUser(email,userPassword), HttpStatus.CREATED);
-    //}
-
     //http://localhost:8081/api/user/getAllUser(GET)
     @GetMapping
     public List<User> getAllUser(){
@@ -48,17 +43,17 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id){
+    public ResponseEntity<User> getUserById(@PathVariable String id){
         return new ResponseEntity<>(userService.getUserById(id),HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){
+    public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User user){
        return new ResponseEntity<>(userService.updateUser(user, id),HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable Long id){
+    public ResponseEntity<String> deleteUser(@PathVariable String id){
         userService.deleteUser(id);
         return new ResponseEntity<>("User deleted successfully",HttpStatus.OK);
      }

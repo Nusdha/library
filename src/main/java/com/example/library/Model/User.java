@@ -2,8 +2,6 @@ package com.example.library.Model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -17,28 +15,20 @@ import lombok.Setter;
 public class User {
 
     @Id
-    private long userID;
-    @NotBlank
+    private String userID;
     private String userFirstName;
-    @NotBlank
     private String UserLastName;
-    @NotBlank
-    @Email
     private String email;
-    @NotBlank
     private String department;
-    @NotBlank
     private String course;
-    @NotBlank
     private int YearOfEnrollment;
-    @NotBlank
     private String userPassword;
 
-    public long getUserID() {
+    public String getUserID() {
         return userID;
     }
 
-    public void setUserID(long userID) {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 
