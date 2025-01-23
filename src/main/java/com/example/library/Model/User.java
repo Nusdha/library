@@ -15,7 +15,7 @@ import lombok.Setter;
 public class User {
 
     @Id
-    private String userID;
+    private long userID;
     private String userFirstName;
     private String UserLastName;
     private String email;
@@ -24,11 +24,11 @@ public class User {
     private int YearOfEnrollment;
     private String userPassword;
 
-    public String getUserID() {
+    public long getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(long userID) {
         this.userID = userID;
     }
 

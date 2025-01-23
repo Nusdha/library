@@ -43,17 +43,17 @@ public class BorrowController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Borrow> getBorrowById(@PathVariable String id){
+    public ResponseEntity<Borrow> getBorrowById(@PathVariable long id){
         return new ResponseEntity<>(borrowService.getBorrowById(id),HttpStatus.OK);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Borrow> updateBorrow(@PathVariable String id, @RequestBody Borrow borrow){
+    public ResponseEntity<Borrow> updateBorrow(@PathVariable long id, @RequestBody Borrow borrow){
        return new ResponseEntity<>(borrowService.updateBorrow(borrow, id),HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteBorrow(@PathVariable String id){
+    public ResponseEntity<String> deleteBorrow(@PathVariable long id){
         borrowService.deleteBorrow(id);
         return new ResponseEntity<>("Borrow deleted successfully",HttpStatus.OK);
      }

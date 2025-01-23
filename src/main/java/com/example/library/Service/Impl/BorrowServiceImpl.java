@@ -27,13 +27,13 @@ public class BorrowServiceImpl implements BorrowService{
     }
 
     @Override
-    public Borrow getBorrowById(String id) {
+    public Borrow getBorrowById(long id) {
         Optional<Borrow> borrow = borrowRepository.findById(id);
         return borrow.orElseThrow(() -> new RuntimeException("Borrow not found"));
     }
 
     @Override
-    public Borrow updateBorrow(Borrow borrow, String id) {
+    public Borrow updateBorrow(Borrow borrow, long id) {
         Borrow existingBorrow = getBorrowById(id);
             existingBorrow.setBorrowDate(borrow.getBorrowDate());
             existingBorrow.setReturnDate(borrow.getReturnDate());
@@ -41,7 +41,7 @@ public class BorrowServiceImpl implements BorrowService{
     }
 
     @Override
-    public void deleteBorrow(String id) {
+    public void deleteBorrow(long id) {
         borrowRepository.deleteById(id);
     }
 

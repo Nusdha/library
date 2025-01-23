@@ -27,23 +27,21 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Admin updateAdmin(Admin admin, String id) {
+    public Admin updateAdmin(Admin admin, long id) {
         Admin existingAdmin = getAdminById(id);
                 existingAdmin.setAdminName(admin.getAdminName());
                 existingAdmin.setAdminEmail(admin.getAdminEmail());
                 existingAdmin.setPassword(admin.getPassword());
                 return adminRepository.save(existingAdmin);
-            }
-
+    }
 
     @Override
-    public void deleteAdmin(String id) {
-
+    public void deleteAdmin(long id) {
         adminRepository.deleteById(id);
     }
 
     @Override
-    public Admin getAdminById(String id) {
+    public Admin getAdminById(long id) {
         Optional<Admin> admin =adminRepository.findById(id);
         return admin.orElseThrow(() -> new RuntimeException("Admins not found"));
     }

@@ -4,6 +4,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.example.library.Model.Borrow;
 
-public interface BorrowRepository extends MongoRepository<Borrow, String>{
+public interface BorrowRepository extends MongoRepository<Borrow, Long>{
 
 }

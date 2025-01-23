@@ -15,12 +15,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 public class Admin {
     @Id
-    private String adminId;
+    private long adminId;
     private String adminName;
     private String adminEmail;
     private String password;
 
-    public String getAdminId() {
+    public long getAdminId() {
         return adminId;
     }
 
@@ -36,7 +36,7 @@ public class Admin {
         return password;
     }
 
-    public void setAdminId(String adminId) {
+    public void setAdminId(long adminId) {
         this.adminId = adminId;
     }
 
