@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdminServiceImpl implements AdminService {
 
+    
+
     @Autowired
     private AdminRepository adminRepository;
 
@@ -27,7 +29,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Admin updateAdmin(Admin admin, long id) {
+    public Admin updateAdmin(Admin admin, int id) {
         Admin existingAdmin = getAdminById(id);
                 existingAdmin.setAdminName(admin.getAdminName());
                 existingAdmin.setAdminEmail(admin.getAdminEmail());

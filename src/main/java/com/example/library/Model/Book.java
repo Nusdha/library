@@ -16,9 +16,8 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class Book {
-
     @Id
-    private long bookID;
+    private String bookID;
     private String bookTittle;
     private int ISBN;
     private LocalDate publicationDate;
@@ -27,7 +26,7 @@ public class Book {
 
     
 
-    public long getBookID() {
+    public String getBookID() {
         return bookID;
     }
 
@@ -51,7 +50,7 @@ public class Book {
         return status;
     }
 
-    public void setBookID(long bookID) {
+    public void setBookID(String bookID) {
         this.bookID = bookID;
     }
 

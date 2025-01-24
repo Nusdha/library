@@ -27,19 +27,19 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public Book getBookById(long id) {
+    public Book getBookById(String id) {
         Optional<Book> book = bookRepository.findById(id);
         return book.orElseThrow(() -> new RuntimeException("Book not found"));
     }
 
     @Override
-    public void deleteBook(long id) {
+    public void deleteBook(String id) {
         bookRepository.deleteById(id);
     }
 
     @Override
-    public Book updateBook(Book book, long id) {
-        Book existingBook = getBookById(id);
+    public Book updateBook(Book book) {
+        Book existingBook = getBookById(book.getBookID());
         existingBook.setBookTittle(book.getBookTittle());
         existingBook.setISBN(book.getISBN());
         existingBook.setPublicationDate(book.getPublicationDate());
