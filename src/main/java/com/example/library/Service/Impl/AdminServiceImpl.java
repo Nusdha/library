@@ -29,7 +29,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Admin updateAdmin(Admin admin, int id) {
+    public Admin updateAdmin(Admin admin, String id) {
         Admin existingAdmin = getAdminById(id);
                 existingAdmin.setAdminName(admin.getAdminName());
                 existingAdmin.setAdminEmail(admin.getAdminEmail());
@@ -38,12 +38,12 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void deleteAdmin(long id) {
+    public void deleteAdmin(String id) {
         adminRepository.deleteById(id);
     }
 
     @Override
-    public Admin getAdminById(long id) {
+    public Admin getAdminById(String id) {
         Optional<Admin> admin =adminRepository.findById(id);
         return admin.orElseThrow(() -> new RuntimeException("Admins not found"));
     }

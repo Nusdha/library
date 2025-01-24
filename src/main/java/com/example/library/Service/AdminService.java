@@ -10,11 +10,11 @@ public interface AdminService {
 
     List<Admin> getAllAdmin();
 
-    void deleteAdmin(long id);
+    void deleteAdmin(String id);
 
-    Admin getAdminById(long id);
+    Admin getAdminById(String id);
 
-    Admin updateAdmin(Admin admin, int id);
+    Admin updateAdmin(Admin admin, String id);
 
     //Admin loginAdmin(String adminEmail, String password);
 
