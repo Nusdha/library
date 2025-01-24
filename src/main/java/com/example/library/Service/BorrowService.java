@@ -10,10 +10,10 @@ public interface BorrowService {
 
     List<Borrow> getAllBorrow();
 
-    Borrow getBorrowById(long id);
+    Borrow getBorrowById(String id);
 
-    Borrow updateBorrow(Borrow borrow, long id);
+    Borrow updateBorrow(Borrow borrow, String id);
 
-    void deleteBorrow(long id);
+    void deleteBorrow(String id);
 
 }

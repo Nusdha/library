@@ -20,11 +20,11 @@ public class Borrow {
 
     @Id
     @Generated
-    private long borrowId;
+    private String borrowId;
     private LocalDate borrowDate;
     private LocalDate returnDate;
 
-    public long getBorrowId() {
+    public String getBorrowId() {
         return borrowId;
     }
 
@@ -36,7 +36,7 @@ public class Borrow {
         return returnDate;
     }
 
-    public void setBorrowId(long borrowId) {
+    public void setBorrowId(String borrowId) {
         this.borrowId = borrowId;
     }
 
