@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/admin")
@@ -45,7 +47,7 @@ public class AdminController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Admin> updateAdmin(@PathVariable long id, @RequestBody Admin admin){
+    public ResponseEntity<Admin> updateAdmin(@PathVariable int id, @RequestBody Admin admin){
        return new ResponseEntity<>(adminService.updateAdmin(admin, id),HttpStatus.OK);
     }
 
