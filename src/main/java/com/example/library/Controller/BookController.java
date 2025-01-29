@@ -47,7 +47,7 @@ public class BookController {
         return new ResponseEntity<>(bookService.getBookById(id),HttpStatus.OK);
     }
 
-    @PutMapping
+    @PutMapping("{id}")
     public ResponseEntity<Book> updateBook(@RequestBody Book book){
        return new ResponseEntity<>(bookService.updateBook(book),HttpStatus.OK);
     }
