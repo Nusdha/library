@@ -33,28 +33,31 @@ public class BookController {
     //http://localhost:8081/api/book/save(POST)
     @PostMapping
     public ResponseEntity<Book> saveBook(@RequestBody Book book){
-        return new ResponseEntity<>(bookService.saveBook(book), HttpStatus.CREATED);
+        Book saveBook = this.bookService.saveBook(book);
+        return ResponseEntity.ok(saveBook);
     }
 
     //http://localhost:8081/api/book/getAllBook(GET)
     @GetMapping
-    public List<Book> getAllBook(){
-        return bookService.getAllBook();
+    public ResponseEntity<List<Book>> getAllBook(){
+        List<Book> book = this.bookService.getAllBook();
+        return ResponseEntity.ok(book);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping({"/{id}"})
     public ResponseEntity<Book> getBookById(@PathVariable String id){
-        return new ResponseEntity<>(bookService.getBookById(id),HttpStatus.OK);
+        Book book = this.bookService.getBookById(id);
+        return book != null ?  ResponseEntity.ok(book) : ResponseEntity.notFound().build();
     }
 
-    @PutMapping
-    public ResponseEntity<Book> updateBook(@RequestBody Book book){
-       return new ResponseEntity<>(bookService.updateBook(book),HttpStatus.OK);
+    @PutMapping({"/{id}"})
+    public ResponseEntity<Book> updateBook(@PathVariable String id, @RequestBody Book book){
+       return new ResponseEntity<>(bookService.updateBook(id, book), HttpStatus.OK);
     }
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteBook(@PathVariable String id){
-        bookService.deleteBook(id);
-        return new ResponseEntity<>("Book deleted successfully",HttpStatus.OK);
+    @DeleteMapping({"/{id}"})
+    public ResponseEntity<Void> deleteBook(@PathVariable String id){
+        this.bookService.deleteBook(id);
+        return ResponseEntity.noContent().build();
      }
 }
