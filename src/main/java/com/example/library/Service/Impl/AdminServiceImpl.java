@@ -13,8 +13,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdminServiceImpl implements AdminService {
 
-    
-
     @Autowired
     private AdminRepository adminRepository;
 
@@ -48,11 +46,11 @@ public class AdminServiceImpl implements AdminService {
         return admin.orElseThrow(() -> new RuntimeException("Admins not found"));
     }
 
-    //@Override
-    //public Admin loginAdmin(String adminEmail, String password) {
+    @Override
+    public Admin loginAdmin(String adminEmail, String password) {
 
-        //return adminRepository.login(adminEmail,password);
-    //}
+        return adminRepository.findByAdminEmailAndPassword(adminEmail,password);
+    }
         
 
 }
