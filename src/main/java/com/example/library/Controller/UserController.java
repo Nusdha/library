@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.library.Model.User;
@@ -57,5 +58,16 @@ public class UserController {
         userService.deleteUser(id);
         return new ResponseEntity<>("User deleted successfully",HttpStatus.OK);
      }
+
+     @GetMapping("/login")
+    public ResponseEntity<User> login(@RequestParam String email, @RequestParam String userPassword) {
+        User user = userService.loginUser(email, userPassword);
+        return user != null ? ResponseEntity.ok(user) : ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody User user) {
+        return ResponseEntity.ok().build();
+    }
 
 }
