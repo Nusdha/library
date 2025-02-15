@@ -16,6 +16,6 @@ public interface AdminService {
 
     Admin updateAdmin(Admin admin, String id);
 
-    Admin loginAdmin(String adminEmail, String password);
+    Admin getAdminByAdminEmail(String adminEmail);
 
 }

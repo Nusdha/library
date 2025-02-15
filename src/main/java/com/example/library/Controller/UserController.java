@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.library.Model.User;
@@ -31,13 +30,11 @@ public class UserController {
 
     }
 
-    //http://localhost:8081/api/user/save(POST)
     @PostMapping
     public ResponseEntity<User> saveUser(@RequestBody User user){
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
     }
 
-    //http://localhost:8081/api/user/getAllUser(GET)
     @GetMapping
     public List<User> getAllUser(){
         return userService.getAllUser();
@@ -59,15 +56,17 @@ public class UserController {
         return new ResponseEntity<>("User deleted successfully",HttpStatus.OK);
      }
 
-     @GetMapping("/login")
-    public ResponseEntity<User> login(@RequestParam String email, @RequestParam String userPassword) {
-        User user = userService.loginUser(email, userPassword);
-        return user != null ? ResponseEntity.ok(user) : ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-    }
+     @GetMapping("/email/{email}")
+     public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+         User user = userService.getUserByEmail(email);
+         if (user == null) {
+             return ResponseEntity.notFound().build();
+         }
+         return ResponseEntity.ok(user);
+     }
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
         return ResponseEntity.ok().build();
     }
-
 }

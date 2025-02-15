@@ -57,11 +57,14 @@ public class AdminController {
         return new ResponseEntity<>("Admin deleted successfully",HttpStatus.OK);
     }
 
-    @GetMapping("/login")
-    public ResponseEntity<Admin> login(@RequestParam String adminEmail, @RequestParam String password) {
-        Admin admin = adminService.loginAdmin(adminEmail, password);
-        return admin != null ? ResponseEntity.ok(admin) : ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-    }
+    @GetMapping("/email/{adminEmail}")
+     public ResponseEntity<Admin> getAdminByAdminEmail(@PathVariable String adminEmail) {
+         Admin admin = adminService.getAdminByAdminEmail(adminEmail);
+         if (admin == null) {
+             return ResponseEntity.notFound().build();
+         }
+         return ResponseEntity.ok(admin);
+     }
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody Admin admin) {
