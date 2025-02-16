@@ -47,7 +47,7 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User user){
-       return new ResponseEntity<>(userService.updateUser(user, id),HttpStatus.OK);
+       return new ResponseEntity<>(userService.updateUser(id, user),HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

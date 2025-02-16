@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User updateUser(User user, String id) {
+    public User updateUser(String id ,User user) {
         User existingUser = getUserById(id);
                 existingUser.setUserFirstName(user.getUserFirstName());
                 existingUser.setUserLastName(user.getUserLastName());

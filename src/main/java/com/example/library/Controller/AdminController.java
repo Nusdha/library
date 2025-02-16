@@ -30,11 +30,6 @@ public class AdminController {
         return new ResponseEntity<>(adminService.saveAdmin(admin), HttpStatus.CREATED);
     }
 
-    //@PostMapping("/login")
-    //public ResponseEntity<Admin> loginAdmin(@PathVariable String adminEmail,@PathVariable String password){
-        //return new ResponseEntity<>(adminService.loginAdmin(adminEmail,password), HttpStatus.CREATED);
-    //}
-
     //http://localhost:8081/api/admin/getAllAdmin(GET)
     @GetMapping
     public List<Admin> getAllAdmin(){
@@ -48,7 +43,7 @@ public class AdminController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Admin> updateAdmin(@PathVariable String id, @RequestBody Admin admin){
-       return new ResponseEntity<>(adminService.updateAdmin(admin, id),HttpStatus.OK);
+       return new ResponseEntity<>(adminService.updateAdmin(id, admin),HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
