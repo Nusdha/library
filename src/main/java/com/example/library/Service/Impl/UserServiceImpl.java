@@ -16,8 +16,6 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRepository;
 
-    
-
     @Override
     public User saveUser(User user) {
         return userRepository.save(user);
@@ -35,7 +33,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User updateUser(User user, String id) {
+    public User updateUser(String id ,User user) {
         User existingUser = getUserById(id);
                 existingUser.setUserFirstName(user.getUserFirstName());
                 existingUser.setUserLastName(user.getUserLastName());
@@ -53,9 +51,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User loginUser(String email, String userPassword) {
-
-        return userRepository.findByEmailAndUserPassword(email,userPassword);
+    public User getUserByEmail(String email) {
+         return userRepository.findByEmail(email);
     }
 
 }

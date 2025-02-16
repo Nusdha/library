@@ -30,11 +30,6 @@ public class AdminController {
         return new ResponseEntity<>(adminService.saveAdmin(admin), HttpStatus.CREATED);
     }
 
-    //@PostMapping("/login")
-    //public ResponseEntity<Admin> loginAdmin(@PathVariable String adminEmail,@PathVariable String password){
-        //return new ResponseEntity<>(adminService.loginAdmin(adminEmail,password), HttpStatus.CREATED);
-    //}
-
     //http://localhost:8081/api/admin/getAllAdmin(GET)
     @GetMapping
     public List<Admin> getAllAdmin(){
@@ -48,7 +43,7 @@ public class AdminController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Admin> updateAdmin(@PathVariable String id, @RequestBody Admin admin){
-       return new ResponseEntity<>(adminService.updateAdmin(admin, id),HttpStatus.OK);
+       return new ResponseEntity<>(adminService.updateAdmin(id, admin),HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -57,11 +52,14 @@ public class AdminController {
         return new ResponseEntity<>("Admin deleted successfully",HttpStatus.OK);
     }
 
-    @GetMapping("/login")
-    public ResponseEntity<Admin> login(@RequestParam String adminEmail, @RequestParam String password) {
-        Admin admin = adminService.loginAdmin(adminEmail, password);
-        return admin != null ? ResponseEntity.ok(admin) : ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-    }
+    @GetMapping("/email/{adminEmail}")
+     public ResponseEntity<Admin> getAdminByAdminEmail(@PathVariable String adminEmail) {
+         Admin admin = adminService.getAdminByAdminEmail(adminEmail);
+         if (admin == null) {
+             return ResponseEntity.notFound().build();
+         }
+         return ResponseEntity.ok(admin);
+     }
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody Admin admin) {
