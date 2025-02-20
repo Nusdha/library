@@ -10,11 +10,11 @@ public interface UserService {
 
     List<User> getAllUser();
 
-    User getUserById(String id);
+    User getUserById(String userID);
 
-    User updateUser(String id ,User user);
+    User updateUser(String userID ,User user);
 
-    void deleteUser(String id);
+    void deleteUser(String userID);
 
     User getUserByEmail(String email);
 }

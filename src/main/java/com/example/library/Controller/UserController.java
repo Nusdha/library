@@ -40,19 +40,19 @@ public class UserController {
         return userService.getAllUser();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable String id){
-        return new ResponseEntity<>(userService.getUserById(id),HttpStatus.OK);
+    @GetMapping("/{userID}")
+    public ResponseEntity<User> getUserById(@PathVariable String userID){
+        return new ResponseEntity<>(userService.getUserById(userID),HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User user){
-       return new ResponseEntity<>(userService.updateUser(id, user),HttpStatus.OK);
+    @PutMapping("/{userID}")
+    public ResponseEntity<User> updateUser(@PathVariable String userID, @RequestBody User user){
+       return new ResponseEntity<>(userService.updateUser(userID, user),HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable String id){
-        userService.deleteUser(id);
+    @DeleteMapping("/{userID}")
+    public ResponseEntity<String> deleteUser(@PathVariable String userID){
+        userService.deleteUser(userID);
         return new ResponseEntity<>("User deleted successfully",HttpStatus.OK);
      }
 
