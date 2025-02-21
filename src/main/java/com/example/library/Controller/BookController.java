@@ -44,20 +44,20 @@ public class BookController {
         return ResponseEntity.ok(book);
     }
 
-    @GetMapping({"/{id}"})
-    public ResponseEntity<Book> getBookById(@PathVariable String id){
-        Book book = this.bookService.getBookById(id);
+    @GetMapping({"/{bookID}"})
+    public ResponseEntity<Book> getBookById(@PathVariable String bookID){
+        Book book = this.bookService.getBookById(bookID);
         return book != null ?  ResponseEntity.ok(book) : ResponseEntity.notFound().build();
     }
 
-    @PutMapping({"/{id}"})
-    public ResponseEntity<Book> updateBook(@PathVariable String id, @RequestBody Book book){
-       return new ResponseEntity<>(bookService.updateBook(id, book), HttpStatus.OK);
+    @PutMapping({"/{bookID}"})
+    public ResponseEntity<Book> updateBook(@PathVariable String bookID, @RequestBody Book book){
+       return new ResponseEntity<>(bookService.updateBook(bookID, book), HttpStatus.OK);
     }
 
-    @DeleteMapping({"/{id}"})
-    public ResponseEntity<Void> deleteBook(@PathVariable String id){
-        this.bookService.deleteBook(id);
-        return ResponseEntity.noContent().build();
+    @DeleteMapping({"/{bookID}"})
+    public ResponseEntity<String> deleteBook(@PathVariable String bookID){
+        bookService.deleteBook(bookID);
+        return new ResponseEntity<>("Book deleted successfully",HttpStatus.OK);
      }
 }
