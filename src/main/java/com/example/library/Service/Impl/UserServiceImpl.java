@@ -27,14 +27,14 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User getUserById(String id) {
-        Optional<User> user = userRepository.findById(id);
+    public User getUserById(String userID) {
+        Optional<User> user = userRepository.findById(userID);
         return user.orElseThrow(() -> new RuntimeException("User not found"));
     }
 
     @Override
-    public User updateUser(String id ,User user) {
-        User existingUser = getUserById(id);
+    public User updateUser(String userID ,User user) {
+        User existingUser = getUserById(userID);
                 existingUser.setUserFirstName(user.getUserFirstName());
                 existingUser.setUserLastName(user.getUserLastName());
                 existingUser.setEmail(user.getEmail());
@@ -46,8 +46,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void deleteUser(String id) {
-        userRepository.deleteById(id);
+    public void deleteUser(String userID) {
+        userRepository.deleteById(userID);
     }
 
     @Override
