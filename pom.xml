@@ -55,8 +55,25 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>	
-	</dependencies>
+			<!-- Spring Boot Starter Web -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+			</dependency>
 
+			<!-- Java Mail Sender -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-mail</artifactId>
+			</dependency>
+
+			<!-- Lombok (optional for reducing boilerplate code) -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
 	<build>
 		<plugins>
 			<plugin>
